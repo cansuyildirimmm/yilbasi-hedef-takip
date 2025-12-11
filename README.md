@@ -27,7 +27,7 @@ Bu proje, Python tabanlı bir full-stack (tam yığın) mimari kullanılarak gel
 
 ### Depoyu Klonlama
 
-#Projeyi GitHub'dan yerel makinenize indirin:
+Projeyi GitHub'dan yerel makinenize indirin:
 
 ```bash
 git clone [https://github.com/cansuyildirimmm/yilbasi-hedef-takip.git](https://github.com/cansuyildirimmm/yilbasi-hedef-takip.git)
@@ -47,3 +47,4 @@ python app.py
 
 # Uygulama çalıştıktan sonra, tarayıcınızdan aşağıdaki adrese gidin:
 [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
+
