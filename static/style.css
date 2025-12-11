@@ -1,0 +1,278 @@
+/* Temel Sıfırlama ve Fontlar */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1a1a1a;
+    color: #ECF0F1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* -------------------------------------- */
+/* ✨ CSS PARILTI/SHIMMER EFEKTİ VE HERO STİLİ ✨ */
+/* -------------------------------------- */
+
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero {
+    /* Altın/Kırmızı Pırıltı Zemin */
+    background: linear-gradient(135deg, #360f0f 0%, #0d0d0d 25%, #FFD700 50%, #0d0d0d 75%, #360f0f 100%);
+    background-size: 400% 400%;
+    animation: shimmer 15s ease infinite; /* Pırıltı animasyonu */
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4em;
+    color: #FFD700;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.9), 0 0 5px #000; /* Daha göz alıcı gölge */
+}
+
+.slogan {
+    font-size: 1.5em;
+    color: #ECF0F1;
+    margin-top: 30px;
+    opacity: 0.9;
+}
+
+/* Geri Sayım Kutuları */
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.countdown-box {
+    background-color: rgba(192, 57, 43, 0.95); /* Yılbaşı Kırmızısı */
+    border-radius: 15px;
+    padding: 20px 30px;
+    min-width: 120px;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+    border: 3px solid #FFD700;
+    transition: transform 0.3s;
+}
+
+.countdown-number {
+    display: block;
+    font-size: 3.5em;
+    font-weight: 700;
+    color: #ECF0F1;
+    line-height: 1.1;
+}
+
+/* Navigasyon ve Butonlar */
+.auth-nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+.nav-btn {
+    padding: 8px 15px;
+    background-color: #2ECC71; /* Yeşil */
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+.nav-btn:hover {
+    background-color: #27ae60;
+}
+
+/* -------------------------------------- */
+/* İÇERİK ve HEDEF BÖLÜMÜ STİLLERİ */
+/* -------------------------------------- */
+
+.content-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #2c3e50;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px rgba(46, 204, 113, 0.7); /* Parıltıya uygun gölge */
+}
+
+/* Hedef Giriş Formu */
+.goal-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.goal-input input, .goal-input select {
+    padding: 12px;
+    border: 2px solid #C0392B;
+    border-radius: 8px;
+    background-color: #34495e;
+    color: #ECF0F1;
+    font-size: 1em;
+}
+
+#add-goal-btn {
+    padding: 12px 25px;
+    background-color: #C0392B;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.2s;
+}
+
+#add-goal-btn:hover {
+    background-color: #a93226;
+}
+
+/* Hedef Listesi Stilleri */
+.goal-list {
+    list-style: none;
+    padding: 0;
+}
+
+.goal-item {
+    background-color: #34495e;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid #2ECC71;
+    transition: background-color 0.2s;
+}
+.goal-item:hover {
+    background-color: #44607c;
+}
+
+.goal-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #FFD700;
+    font-size: 1.4em;
+    padding: 0 5px;
+}
+
+/* -------------------------------------- */
+/* GİRİŞ/KAYIT FORMU STİLLERİ (login/register) */
+/* -------------------------------------- */
+
+.form-container {
+    max-width: 450px;
+    padding: 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #FFD700;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #3498DB;
+    border-radius: 8px;
+    background-color: #34495e;
+    color: #ECF0F1;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #C0392B;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 700;
+    transition: background-color 0.2s;
+}
+.auth-button:hover {
+    background-color: #a93226;
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 20px;
+}
+.auth-link a {
+    color: #2ECC71;
+    text-decoration: none;
+}
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+/* Flash Mesajları */
+.flash-message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+.success { background-color: #27ae60; color: white; }
+.error { background-color: #e74c3c; color: white; }
+.info { background-color: #3498db; color: white; }
+
+
+/* Mobil Uyumluluk */
+@media (max-width: 600px) {
+    .main-title {
+        font-size: 3em;
+    }
+    .countdown-container {
+        gap: 10px;
+    }
+    .countdown-box {
+        min-width: 70px;
+        padding: 10px 15px;
+    }
+    .countdown-number {
+        font-size: 2.5em;
+    }
+    .content-section {
+        padding: 20px;
+        margin: 20px auto;
+    }
+    .auth-nav {
+        position: static;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+}

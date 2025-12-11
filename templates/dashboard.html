@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ current_user.username }}'ın Kontrol Paneli</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Sadece dashboard için ek stil */
+        .goal-actions form { margin: 0; }
+        .goal-actions button { margin-left: 0; }
+        .flash-messages { margin-bottom: 20px; text-align: center; }
+        .flash-message { padding: 10px; border-radius: 5px; margin-bottom: 10px; }
+        .success { background-color: #2ECC71; color: white; }
+        .error { background-color: #C0392B; color: white; }
+        .info { background-color: #3498DB; color: white; }
+    </style>
+</head>
+<body>
+    <header class="hero" style="min-height: 20vh; padding: 40px 20px;">
+        <h1 class="main-title" style="font-size: 3em;">Hoş Geldin, {{ current_user.username }}!</h1>
+        <p class="slogan">Hedeflerini belirleme ve başarılarını kutlama zamanı.</p>
+        <div class="auth-nav">
+            <a href="{{ url_for('logout') }}" class="nav-btn">Çıkış Yap</a>
+            <a href="{{ url_for('home') }}" class="nav-btn">Geri Sayım</a>
+        </div>
+    </header>
+
+    <main class="content-section">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <section class="goal-entry-form">
+            <h2 style="color: #FFD700;">Yeni Başarı/Hedef Ekle</h2>
+            <form method="POST" action="{{ url_for('dashboard') }}" class="goal-input" style="flex-direction: column; gap: 15px;">
+                <input type="text" name="goal_text" placeholder="Hayalini veya hedefini buraya yaz (Min 3 Karakter)..." required minlength="3" style="width: 100%;">
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <select name="goal_type" required style="flex-grow: 1; padding: 10px; border-radius: 8px;">
+                        <option value="" disabled selected>-- Hedef Tipini Seç --</option>
+                        <option value="achieved">✔️ Bu Sene Gerçekleştirdim (2025)</option>
+                        <option value="future">🎯 Yeni Yıl Hedefim (2026)</option>
+                    </select>
+                    <button type="submit" id="add-goal-btn" style="padding: 10px 20px;">Kaydet</button>
+                </div>
+            </form>
+        </section>
+
+        <hr style="border: 1px solid #34495e; margin: 30px 0;">
+
+        <section>
+            <h2 style="color: #FFD700;">✔️ 2025'te Başardıkların</h2>
+            <ul class="goal-list">
+                {% for goal in achieved_goals %}
+                    <li class="goal-item">
+                        <span>{{ goal.text }}</span>
+                        <form method="POST" action="{{ url_for('delete_goal', goal_id=goal.id) }}" class="goal-actions">
+                             <button type="submit" title="Sil">❌</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <p style="text-align: center; opacity: 0.7; padding: 10px;">Bu sene gerçekleştirdiğin bir başarı yok. İlkini ekle!</p>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section style="margin-top: 40px;">
+            <h2 style="color: #2ECC71;">🎯 2026 Yılı Hedeflerin</h2>
+            <ul class="goal-list">
+                {% for goal in future_goals %}
+                    <li class="goal-item">
+                        <span>{{ goal.text }}</span>
+                        <form method="POST" action="{{ url_for('delete_goal', goal_id=goal.id) }}" class="goal-actions">
+                             <button type="submit" title="Sil">❌</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <p style="text-align: center; opacity: 0.7; padding: 10px;">Yeni yıl için hedeflerini belirle ve listeyi doldur!</p>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

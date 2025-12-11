@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yılbaşı Geri Sayımı</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="hero">
+        <nav class="auth-nav">
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('dashboard') }}" class="nav-btn">Kontrol Paneli</a>
+                <a href="{{ url_for('logout') }}" class="nav-btn">Çıkış Yap</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="nav-btn">Giriş Yap</a>
+                <a href="{{ url_for('register') }}" class="nav-btn">Kayıt Ol</a>
+            {% endif %}
+        </nav>
+
+        <h1 class="main-title">Hoş Geldin 2026! 🥂</h1>
+        <div id="countdown-container" class="countdown-container">
+            </div>
+        <p class="slogan">Yeni Yıl, Yeni Umutlar, Yeni Başlangıçlar</p>
+    </header>
+
+    <main class="content-section">
+        <section id="goals" style="text-align: center;">
+            <p style="font-size: 1.2em; color: #ccc;">Yeni yıl kararlarınızı belirlemek ve başarılarınızı kaydetmek için lütfen **Giriş Yapın**.</p>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
